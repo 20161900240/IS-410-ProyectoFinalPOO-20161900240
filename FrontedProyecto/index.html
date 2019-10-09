@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="img/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <title>ProduMas</title>
+</head>
+
+<body>
+    <header>
+        <!-- BARRA DE NAVAGACIÓN DE LA PAGINA PRiNCIPAL -->
+        <nav class="navbar col-12 navbar-expand-lg navbar-dark">
+            <img src="img/logo.png" alt="" srcset="">
+            <a class="navbar-brand">PRODUCTOS Y MÁS</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse " id="navbarTogglerDemo02">
+                <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                    <li class="nav-item ">
+                        <a class="nav-link" href="#login" data-toggle="modal"><i class="fas fa-user-lock"></i> INICIAR
+                            SESIÓN</i></a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            REGISTROS <i class="fas fa-user-plus"></i>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="#registro-usuario" data-toggle="modal"><i
+                                    class="fas fa-user"></i> USUARIO</a>
+                            <a class="dropdown-item" href="#registro-empresa" data-toggle="modal"><i
+                                    class="fas fa-users"></i> EMPRESA</a>
+                        </div>
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Buscar...">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar <i
+                            class="fab fa-searchengin"></i></button>
+                </form>
+            </div>
+        </nav>
+    </header>
+
+    <!--VENTANAS MODALES -->
+
+    <!--Ventana modal del Login-->
+    <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenterTitle"><i class="fas fa-sign-in-alt"></i> INICIAR SESIÓN
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body ">
+                    <div class="contenedor-de-modal-body">
+                        <div class="col-12 avatar-login">
+                            <img src="img/avatar.png" alt="" srcset="">
+                        </div>
+                        <form action="" method="">
+                            <div class="form-group">
+                                <i class="fas fa-user emoji-form-login"></i>
+                                <input id="nombreUsuarioLogin" type="text" autocomplete="off" class="form-control" placeholder="Usuario" required>
+                            </div>
+                            <div class="form-group">
+                                <i id="emoji-form-login-contrasena" onclick="mostrarContrasenaIniciarSesion()" class="fas fa-eye emoji-form-login"></i>
+                                <input id="contrasena-login" type="password" class="form-control" placeholder="Contraseña" required>
+                            </div>
+                            <div class="col-12 rec-contra">
+                                <a href=""> RECUPERAR CONTRASEÑA? <span class="fas fa-meh-rolling-eyes"> </span></a>
+                            </div>
+                            <button class="btn btn-outline-success bs-i-login">
+                                INGRESAR
+                                <i class="fas fa-sign-in-alt"></i>
+                            </button>
+                        </form>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-success" data-dismiss="modal">
+                        CERRAR
+                        <i class="fas fa-window-close"></i>
+                    </button>
+
+                    <button type="button" class="btn btn-outline-success" data-dismiss="modal" data-toggle="modal" data-target="#registro-usuario">
+                        REGISTRARSE
+                        <i class="fas fa-user-plus"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Ventana modal de registro de usuario-->
+    <div class="modal fade" id="registro-usuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered  modal-dialog-scrollable" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenterTitle"><i class="fas fa-user"></i> REGISTRO USUARIO
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body ">
+                    <div class="contenedor-de-modal-body">
+                        <div class="col-12 avatar-login">
+                            <img src="img/avatar.png" alt="" srcset="">
+                        </div>
+                        <form id="formulario-usuario">
+                            <div class="form-group-reg">
+                                <i class="fas fa-user  emoji-form-registro-usuario"></i>
+                                <input id="nombreUsuario" autocomplete="off" type="text" class="form-control-reg" minlength="4" maxlength="40" placeholder="Usuario">
+                                <p id="listo-nombreUsuario" class="listo ds-color">Listo <i class="fas fa-thumbs-up"></i></p>
+                                <p id="no-listo-nombreUsuario" class="no-listo ds-color">No esta listo <i class="fas fa-thumbs-down"></i></p>
+                            </div>
+                            <div class="form-group-reg">
+                                <i class="fas fa-envelope emoji-form-registro-usuario"></i>
+                                <input id="correoUsuario" type="email" autocomplete="off" class="form-control-reg" placeholder="Correo" onKeyPress="return validarTeclaEspacio(event)">
+                                <p id="listo-correoUsuario" class="listo ds-color">Listo <i class="fas fa-thumbs-up"></i></p>
+                                <p id="no-listo-correoUsuario" class="no-listo ds-color">No esta listo <i class="fas fa-thumbs-down"></i></p>
+                            </div>
+
+                            <div class="form-group-reg">
+                                <i class="far fa-id-card  emoji-form-registro-usuario"></i>
+                                <input id="idUsuario" autocomplete="off" maxlength="30" minlength="4" type="text" class="form-control-reg" placeholder="ID" onKeyPress="return validarTeclaEspacio(event)">
+                                <p id="listo-idUsuario" class="listo ds-color">Listo <i class="fas fa-thumbs-up"></i>
+                                </p>
+                                <p id="no-listo-idUsuario" class="no-listo ds-color">No esta listo <i class="fas fa-thumbs-down"></i></p>
+                            </div>
+                            <div class="form-group-reg">
+                                <i class="fas fa-home  emoji-form-registro-usuario"></i>
+                                <input id="direccionUsuario" autocomplete="off" type="text" class="form-control-reg" placeholder="Dirección">
+                                <p id="listo-direccionUsuario" class="listo ds-color">Listo <i class="fas fa-thumbs-up"></i></p>
+                                <p id="no-listo-direccionUsuario" class="no-listo ds-color">No esta listo <i class="fas fa-thumbs-down"></i></p>
+                            </div>
+                            <div class="form-group-reg">
+                                <i class="fas fa-mobile-alt  emoji-form-registro-usuario"></i>
+                                <input id="telefonoUsuario" autocomplete="off" type="number" class="form-control-reg" placeholder="Número de teléfono">
+                                <p id="listo-telefonoUsuario" class="listo ds-color">Listo <i class="fas fa-thumbs-up"></i></p>
+                                <p id="no-listo-telefonoUsuario" class="no-listo ds-color">No esta listo <i class="fas fa-thumbs-down"></i></p>
+                            </div>
+                            <div class="form-group-reg">
+                                <i id="emojiRegistroUsuario" onclick="mostrarContrasena()" class="fas fa-eye  emoji-form-registro-usuario"></i>
+                                <input id="contrasenaUsuario" type="password" class="form-control-reg" placeholder="Contraseña" onKeyPress="return validarTeclaEspacio(event)">
+                                <p id="listo-contrasenaUsuario" class="listo ds-color">Listo <i class="fas fa-thumbs-up"></i></p>
+                                <p id="no-listo-contrasenaUsuario" class="no-listo ds-color">No esta listo <i class="fas fa-thumbs-down"></i></p>
+                            </div>
+                            <div class="sel-pais">
+                                <i class="fas fa-globe-americas emoji-pais"></i>
+                                <select id="paisUsuario" class="">
+                                    <option value="" disabled selected>País de origen</option>
+                                </select>
+                            </div>
+                            <p id="listo-paisUsuario" class="listo ds-color">Listo <i class="fas fa-thumbs-up"></i></p>
+                            <p id="no-listo-paisUsuario" class="no-listo ds-color">No esta listo <i class="fas fa-thumbs-down"></i></p>
+
+                            <div class="form-control-reg">
+                                <div>
+                                    <i class="fas fa-calendar-alt  emoji-form-registro-usuario" style="margin-top: 0px"></i>
+                                </div>
+                                <div class="naciygen">
+                                    <div>
+                                        <span>Nacimiento: </span>
+                                    </div>
+                                    <div class="inp-date">
+                                        <input id="nacimientoUsuario" type="date">
+                                    </div>
+
+                                </div>
+                            </div>
+                            <p id="listo-nacimientoUsuario" class="nacimiento-listo ds-color">Listo <i class="fas fa-thumbs-up"></i></p>
+                            <p id="no-listo-nacimientoUsuario" class="nacimiento-no-listo ds-color">No esta listo <i class="fas fa-thumbs-down"></i></p>
+                            <div class="form-control-reg" style="margin-top: 18px;">
+                                <div>
+                                    <i class="fas fa-child  emoji-form-registro-usuario" style="margin-top: 0px"></i>
+                                </div>
+                                <div style="display: flex; margin-left: 45px;">
+                                    <div>
+                                        <span>Género: </span>
+                                    </div>
+                                    <div class="inp-date" onclick="validarGenero()">
+                                        <div id="generoUsuario" class="inp-gene">
+                                            <div><label><span>F <input type="radio" name="genero"
+                                                            value="F"></span></label></div>
+                                            <div><label><span>M <input type="radio" name="genero"
+                                                            value="M"></span></label></div>
+                                            <div><label><span>X <input type="radio" name="genero"
+                                                            value="X"></span></label></div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- onclick="reseFre()" -->
+                            <p id="listo-generoUsuario" class="genero-listo ds-color">Listo <i class="fas fa-thumbs-up"></i></p>
+                            <p id="no-listo-generoUsuario" class="genero-no-listo ds-color">No esta listo <i class="fas fa-thumbs-down"></i></p>
+                            <button type="button" class="btn btn-outline-success bs-i-login" data-dismiss="modal" data-toggle="modal" data-target="#registro-empresa">
+                                REGISTRAR EMPRESA
+                                <i class="fas fa-users"></i>
+                            </button>
+                        </form>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-success" data-dismiss="modal">
+                        CERRAR
+                        <i class="fas fa-window-close"></i>
+                    </button>
+                    <button type="button" onclick="enviarDatosUsuarios()" class="btn btn-outline-success">
+                        ENVIAR
+                        <i class="fas fa-share-square"></i>
+                    </button>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Ventana modal de registro de Empresa-->
+    <div class="modal fade" id="registro-empresa" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered  modal-dialog-scrollable" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenterTitle"><i class="fas fa-users"></i> REGISTRO EMPRESA
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body ">
+                    <div class="contenedor-de-modal-body">
+                        <div class="col-12 avatar-login">
+                            <img src="img/avatar-empresa.png" alt="" srcset="">
+                        </div>
+                        <form method="post" action="#" enctype="multipart/form-data">
+                            <!-- id="formulario-empresa" -->
+                            <!-- campo de nombre de la empresa -->
+                            <div class="form-group-reg">
+                                <i class="fas fa-users  emoji-form-registro-usuario"></i>
+                                <input id="nombreEmpresa" autocomplete="off" type="text" class="form-control " placeholder="Nombre de la empresa">
+                                <p id="listo-nombreEmpresa" class="listo ds-color">Listo <i class="fas fa-thumbs-up"></i></p>
+                                <p id="no-listo-nombreEmpresa" class="no-listo ds-color">No esta listo <i class="fas fa-thumbs-down"></i></p>
+                            </div>
+                            <!-- campo de correo de la empresa -->
+                            <div class="form-group-reg">
+                                <i class="fas fa-envelope emoji-form-registro-usuario"></i>
+                                <input onKeyPress="return validarTeclaEspacio(event)" id="correoEmpresa" autocomplete="off" type="email" class="form-control " placeholder="Correo">
+                                <!-- " -->
+                                <p id="listo-correoEmpresa" class="listo ds-color">Listo <i class="fas fa-thumbs-up"></i></p>
+                                <p id="no-listo-correoEmpresa" class="no-listo ds-color">No esta listo <i class="fas fa-thumbs-down"></i></p>
+                            </div>
+                            <!-- campo del id de la empresa -->
+                            <div class="form-group-reg">
+                                <i class="far fa-id-card  emoji-form-registro-usuario"></i>
+                                <input onKeyPress="return validarTeclaEspacio(event)" id="idEmpresa" autocomplete="off" type="text" class="form-control " placeholder="ID de empresa">
+                                <p id="listo-idEmpresa" class="listo ds-color">Listo <i class="fas fa-thumbs-up"></i>
+                                </p>
+                                <p id="no-listo-idEmpresa" class="no-listo ds-color">No esta listo <i class="fas fa-thumbs-down"></i></p>
+                            </div>
+                            <!-- campo de telefono de empresa -->
+                            <div class="form-group-reg">
+                                <i class="fas fa-mobile-alt  emoji-form-registro-usuario"></i>
+                                <input id="telefonoEmpresa" autocomplete="off" type="number" class="form-control " placeholder="Número de teléfono">
+                                <p id="listo-telefonoEmpresa" class="listo ds-color">Listo <i class="fas fa-thumbs-up"></i></p>
+                                <p id="no-listo-telefonoEmpresa" class="no-listo ds-color">No esta listo <i class="fas fa-thumbs-down"></i></p>
+                            </div>
+                            <!-- campo de la pagina web de la empresa -->
+                            <div class="form-group-reg">
+                                <i class="fas fa-at emoji-form-registro-usuario"></i>
+                                <input onKeyPress="return validarTeclaEspacio(event)" id="paginaWebEmpresa" type="text" autocomplete="off" class="form-control " placeholder="Ejemplo: nombrepaginaweb.com">
+                                <p id="listo-paginaWebEmpresa" class="listo ds-color">Listo <i class="fas fa-thumbs-up"></i></p>
+                                <p id="no-listo-paginaWebEmpresa" class="no-listo ds-color">No esta listo <i class="fas fa-thumbs-down"></i></p>
+                            </div>
+                            <!-- campo de el nombre de usuario de facebook -->
+                            <div class="form-group-reg">
+                                <i class="fab fa-facebook-square emoji-form-registro-usuario"></i>
+                                <input onKeyPress="return validarTeclaEspacio(event)" id="faceEmpresa" type="text" autocomplete="off" class="form-control " placeholder="Ejemplo: facebook.com/nombreEmpresa">
+                                <p id="listo-faceEmpresa" class="listo ds-color">Listo <i class="fas fa-thumbs-up"></i>
+                                </p>
+                                <p id="no-listo-faceEmpresa" class="no-listo ds-color">No esta listo <i class="fas fa-thumbs-down"></i></p>
+                            </div>
+                            <!-- campo de usuario twitter de la empresa -->
+                            <div class="form-group-reg">
+                                <i class="fab fa-twitter-square emoji-form-registro-usuario"></i>
+                                <input id="twitEmpresa" onKeyPress="return validarTeclaEspacio(event)" autocomplete="off" type="text" class="form-control " placeholder="Ejemplo: @nombreEmpresa">
+                                <p id="listo-twitEmpresa" class="listo ds-color ">Listo <i class="fas fa-thumbs-up"></i>
+                                </p>
+                                <p id="no-listo-twitEmpresa" class="no-listo ds-color ">No esta listo <i class="fas fa-thumbs-down"></i></p>
+                            </div>
+                            <!-- campo de la Contraseña de la empresa -->
+                            <div class="form-group-reg">
+                                <i id="emoji-form-registro-empresa-contrasena" onclick="mostrarContrasenaRegistroEmpresa()" class="fas fa-eye  emoji-form-registro-usuario"></i>
+                                <input onKeyPress="return validarTeclaEspacio(event)" id="contrasenaEmpresa" type="password" class="form-control " placeholder="Contraseña">
+                                <p id="listo-contrasenaEmpresa" class="listo ds-color">Listo <i class="fas fa-thumbs-up"></i></p>
+                                <p id="no-listo-contrasenaEmpresa" class="no-listo ds-color">No esta listo <i class="fas fa-thumbs-down"></i></p>
+                            </div>
+                            <!-- campo de logitu y latitud de la empresa -->
+                            <button type="button" class="selecionar-ubicación" data-toggle="modal" data-target="#long-lat" onclick="seleccionarLgLt()"><strong>Seleccione
+                                    longitud/latitud</strong></button>
+                            <div id="ubicación">
+                                <div class="form-group-reg">
+                                    <i class="fas fa-globe  emoji-form-registro-usuario"></i>
+                                    <input id="longitudEmpresa" disabled type="text" class="form-control " placeholder="Longitud">
+                                    <p id="listo-longitudEmpresa" class="listo ds-color">Listo <i class="fas fa-thumbs-up"></i></p>
+                                    <p id="no-listo-longitudEmpresa" class="no-listo ds-color">No esta listo <i class="fas fa-thumbs-down"></i></p>
+                                </div>
+                                <div class="form-group-reg">
+                                    <i class="fas fa-globe  emoji-form-registro-usuario"></i>
+                                    <input id="latitudEmpresa" disabled type="text" class="form-control " placeholder="Latitud">
+                                    <p id="listo-latitudEmpresa" class="listo ds-color">Listo <i class="fas fa-thumbs-up"></i></p>
+                                    <p id="no-listo-latitudEmpresa" class="no-listo ds-color">No esta listo <i class="fas fa-thumbs-down"></i></p>
+                                </div>
+                            </div>
+                            <!-- campo de el ais de la cede PRiNCIPAL de la empresa -->
+                            <div class="sel-pais">
+                                <i class="fas fa-globe-americas emoji-pais"></i>
+                                <select id="paisEmpresa" class="">
+                                    <option disabled selected>País</option>
+                                </select>
+                            </div>
+                            <p id="listo-paisEmpresa" class="listo ds-color">Listo <i class="fas fa-thumbs-up"></i></p>
+                            <p id="no-listo-paisEmpresa" class="no-listo ds-color">No esta listo <i class="fas fa-thumbs-down"></i></p>
+                            <!-- campo de la fecha de la funcacion de la empresa -->
+                            <div class="form-control ">
+                                <div>
+                                    <i class="fas fa-calendar-alt  emoji-form-registro-usuario" style="margin-top: 0px"></i>
+                                </div>
+                                <div style="display: flex; margin-left: 45px;">
+                                    <div>
+                                        <span>Fundación: </span>
+                                    </div>
+                                    <div class="inp-date">
+                                        <input type="date" id="fundacionEmpresa">
+                                    </div>
+                                </div>
+                            </div>
+                            <p id="listo-fundacionEmpresa" class="listoe ds-color">Listo <i class="fas fa-thumbs-up"></i></p>
+                            <p id="no-listo-fundacionEmpresa" class="no-listoe ds-color">No esta listo <i class="fas fa-thumbs-down"></i></p>
+                        </form>
+
+
+                        <form action="">
+                            <!-- campo del banner de la empresa -->
+                            <div class="form-control " style="margin-top: 18px;">
+                                <div>
+                                    <i class="fas fa-images  emoji-form-registro-usuario" style="margin-top: 0px"></i>
+                                </div>
+                                <div style="display:flex; margin-left: 45px;">
+                                    <div>
+                                        <span>Banner: </span>
+                                    </div>
+                                    <div class="inp-file">
+                                        <p class="subir-foto">Subir Banner</p>
+                                        <input type="file" name="bannerEmpresa" id="bannerEmpresa" onchange="validarMostrarInputDeBanner()">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="vi-img ds-img" style="margin-top: 2px;" id="visor-banner" width="100%">
+
+                            </div>
+                            <p id="listo-bannerEmpresa" class="listoe ds-color">Listo <i class="fas fa-thumbs-up"></i>
+                            </p>
+                            <p id="no-listo-bannerEmpresa" class="no-listoe ds-color">No esta listo <i class="fas fa-thumbs-down"></i></p>
+                        </form>
+
+
+                        <form action="">
+                            <!-- campo del logo de la empresa -->
+                            <div class="form-control " style="margin-top: 18px;">
+                                <div>
+                                    <i class="fas fa-image  emoji-form-registro-usuario" style="margin-top: 0px"></i>
+                                </div>
+                                <div style="display: flex; margin-left: 45px;">
+                                    <div>
+                                        <span>Logo: </span>
+                                    </div>
+                                    <div class="inp-file">
+                                        <p class="subir-foto">Subir Logo</p>
+                                        <input type="file" name="logoEmpresa" id="logoEmpresa" onchange="validarMostrarInputDeLogo()">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="vi-img ds-img" style="margin-top: 2px;" id="visor-logo" width="100%" height="250px">
+
+                            </div>
+                            <p id="listo-logoEmpresa" class="listoe ds-color">Listo <i class="fas fa-thumbs-up"></i>
+                            </p>
+                            <p id="no-listo-logoEmpresa" class="no-listoe ds-color">No esta listo <i class="fas fa-thumbs-down"></i></p>
+                        </form>
+                        <!-- boton de regresar a registrarse como usuario -->
+                        <button type="button" class="btn btn-outline-success bs-i-login" data-dismiss="modal" data-toggle="modal" data-target="#registro-usuario">
+                            REGISTRAR COMO USUARIO
+                            <i class="fas fa-users"></i>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <!-- boton de cerrar la ventana modal -->
+                    <button type="button" class="btn btn-outline-success" data-dismiss="modal">
+                        CERRAR
+                        <i class="fas fa-window-close"></i>
+                    </button>
+                        <!-- boton de enviar los datos sin imagenes -->
+                        <button id="enviar" class="btn btn-outline-success">
+                        ENVIAR
+                        <i class="fas fa-share-square"></i>
+                    </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- ventana modal de ubicación registro -->
+        <!-- Extra large modal -->
+        <div class="modal fade" id="long-lat" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div id="maps" class="maps">
+                    </div>
+
+                    <div class="inps-maps">
+                        <div class="form-group-reg">
+                            <strong>Longitud: </strong>
+                            <input id="longitudEmpresaModal" value="" disabled type="text">
+                            <strong> Latitud: </strong>
+                            <input id="latitudEmpresaModal" value="" disabled type="text">
+                        </div>
+                    </div>
+
+                    <div class="modal-footer-maps">
+                        <button onclick="validarLL()" type="button" class="btn btn-outline-success" data-dismiss="modal">
+                        Listo
+                        <i class="fas fa-window-close"></i>
+                    </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!--Contenido de la Pagina-->
+        <main>
+            <div class="col-lg-11 col-md-11 col-sm-12 contenido-visualizaciones">
+                <!-- Producto 1-->
+                <div class="pro">
+                    <!-- seccion de nombres pro 1 -->
+                    <div class="namePro">NOMBRE DE LA PROMOCIÓN</div>
+                    <div class="nameEmpre">NOMBRE DE LA EMPRESA</div>
+                    <!-- seccion de imagenes pro 1 -->
+                    <div class="img-prin">
+                        <img src="img/prod8.jpg" alt="">
+                    </div>
+                    <!-- sección de descripción producto 1 -->
+                    <div class="des-prin">
+                        <div class="titulo-descripcion"><span><i class="fas fa-list"></i> DESCRIPCIÓN</span>
+                        </div>
+                        <div class="parra">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa magnam sit, corporis nisi voluptatibus officiis aspernatur, iusto id molestias voluptate distinctio numquam molestiae, repellat enim doloribus! Cum alias veritatis
+                                id! Eaque aspernatur asperiores placeat nihil ab nisi sunt nulla ut architecto laboriosam
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Botón para la ventana modal de IMAGENES pro 1-->
+                    <div class="mas-imagenes" data-toggle="modal" data-target="#mas-img-de-pro-1">
+                        <span>
+                        VER MAS IMAGENES <span class="far fa-images"></span>
+                        </span>
+                    </div>
+
+                    <!-- Ventana modal de más IMAGENES pro 1-->
+                    <div class="modal fade" id="mas-img-de-pro-1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">MÁS IMAGENES <span class="far fa-images"></span></h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div id="carousel-pro-1" class="carousel slide" data-ride="carousel">
+                                        <ol class="carousel-indicators">
+                                            <li data-target="#carousel-pro-1" data-slide-to="0" class="active"></li>
+                                            <li data-target="#carousel-pro-1" data-slide-to="1"></li>
+                                            <li data-target="#carousel-pro-1" data-slide-to="2"></li>
+                                        </ol>
+                                        <div class="carousel-inner">
+                                            <div class="carousel-item active" data-intervall="5000">
+                                                <img src="img/ani2.jpg" class="d-block w-100" alt="...">
+                                            </div>
+                                            <div class="carousel-item" data-intervall="5000">
+                                                <img src="img/ani3.jpg" class="d-block w-100" alt="...">
+                                            </div>
+                                            <div class="carousel-item" data-intervall="5000">
+                                                <img src="img/ani4.jpg" class="d-block w-100" alt="...">
+                                            </div>
+                                        </div>
+                                        <a class="carousel-control-prev" href="#carousel-pro-1" role="button" data-slide="prev">
+                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                            <span class="sr-only">Previous</span>
+                                        </a>
+                                        <a class="carousel-control-next" href="#carousel-pro-1" role="button" data-slide="next">
+                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                            <span class="sr-only">Next</span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-outline-success" data-dismiss="modal">CERRAR <i
+                                        class="fas fa-window-close"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Seccion de Precios-->
+                    <div class="cont-precio">
+                        <div>
+                            <p>PRECIO REAL: LPS.220</p>
+                        </div>
+                        <div>
+                            <p>PRECIO OFERTA: LPS.220</p>
+                        </div>
+                        <div>
+                            <p>DESCUENTO: 29%</p>
+                        </div>
+                        <div>
+                            <p>FIN DE PROMOCIÓN: 17/08/2013</p>
+                        </div>
+                        <div data-toggle="modal" href="#login">
+                            <p><i class="fas fa-shopping-cart"></i> COMPRAR</p>
+                        </div>
+                    </div>
+
+                    <!-- Botón para la ventana modal de COMENTARIOS pro 1-->
+                    <div class="mas-imagenes" data-toggle="modal" data-target="#ver-comentarios-pro-1">
+                        <span>
+                        COMENTARIOS <span class="fas fa-comments"></span>
+                        </span>
+                    </div>
+                    <!-- Ventana modal de COMENTARIOS  -->
+                    <div class="modal fade" id="ver-comentarios-pro-1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">COMENTARIOS <span class="fas fa-comments"></span></h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="col-12 comentarios">
+                                        <div>
+                                            <div class="comenta">
+                                                <div>
+                                                    <img src="img/ani3.jpg">
+                                                </div>
+                                                <div class="conte-coment">
+                                                    <div class="conte-coment-div-name"><span>ENOC RIVERA</span></div>
+                                                    <div class="conte-coment-div-cont-pri">
+                                                        <p>
+                                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque minus dicta fugit, iusto non nulla est velit, facilis alias impedit atque ullam libero aliquid nobis quis sunt porro rerum. Nulla?Vel sequi dolores placeat possimus animi, est explicabo recusandae
+                                                            voluptate velit neque aliquam molestias nostrum! Quam perspiciatis quos accusantium voluptates tempore, eveniet quas totam, excepturi asperiores iste enim, officia velit.
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="comenta">
+                                                <div>
+                                                    <img src="img/ani2.jpg">
+                                                </div>
+                                                <div class="conte-coment">
+                                                    <div class="conte-coment-div-name"><span>ENOC RIVERA</span></div>
+                                                    <div class="conte-coment-div-cont-pri">
+                                                        <p>
+                                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque minus dicta fugit, iusto non nulla est velit, facilis alias impedit atque ullam libero aliquid nobis quis sunt porro rerum. Nulla?Vel sequi dolores placeat possimus animi, est explicabo recusandae
+                                                            voluptate velit neque aliquam molestias nostrum! Quam perspiciatis quos accusantium voluptates tempore, eveniet quas totam, excepturi asperiores iste enim, officia velit.
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="comenta">
+                                                <div>
+                                                    <img src="img/avatar.png">
+                                                </div>
+                                                <div class="conte-coment">
+                                                    <div class="conte-coment-div-name"><span>ENOC RIVERA</span></div>
+                                                    <div class="conte-coment-div-cont-pri">
+                                                        <p>
+                                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque minus dicta fugit, iusto non nulla est velit, facilis alias impedit atque ullam libero aliquid nobis quis sunt porro rerum. Nulla?Vel sequi dolores placeat possimus animi, est explicabo recusandae
+                                                            voluptate velit neque aliquam molestias nostrum! Quam perspiciatis quos accusantium voluptates tempore, eveniet quas totam, excepturi asperiores iste enim, officia velit.
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-outline-success" data-dismiss="modal">CERRAR <i
+                                        class="fas fa-window-close"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Producto 2-->
+
+            </div>
+        </main>
+
+        <div>
+            <footer>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            </footer>
+        </div>
+
+
+        <script src="js/jquery-3.4.1.min.js"></script>
+        <script src="js/all.min.js"></script>
+        <script src="js/popper.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/controlador-pagina-inicial.js"></script>
+        <script src="js/controlador-usuario.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js"></script>
+</body>
+
+</html>

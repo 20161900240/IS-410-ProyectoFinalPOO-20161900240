@@ -1,0 +1,13 @@
+{
+    "name": "enoc/proyecto-final-poo",
+    "description": "proyecto-final-poo",
+    "authors": [
+        {
+            "name": "Enoc",
+            "email": "enocantrivmor@yahoo.com"
+        }
+    ],
+    "require": {
+        "kreait/firebase-php": "4.32"
+    }
+}
